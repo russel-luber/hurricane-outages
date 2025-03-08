@@ -1,4 +1,6 @@
-# Hurricane Outage Events
+# Lights Out in the Eye of the Storm
+A Data Analysis of Power Outages and Hurricanes
+
 by Russel Luber ([rluber@ucsd.edu](mailto:rluber@ucsd.edu))
 
 
@@ -11,7 +13,9 @@ The dataset contains information about major power outage events, as well as geo
 ### Motivation
 I experienced many power outages growing up in the Philippines. Sometimes due to [typhoons](https://en.wikipedia.org/wiki/Typhoon). Other times due to insufficient electrical supply. We would always call them "[brownouts](https://en.wikipedia.org/wiki/Brownout_(electricity))" no matter the cause. 
 
-I chose this dataset because I have experienced power outages myself - from outages that lasted a couple hours to blackouts that spanned a couple months at a time. Power outages were distinct stretches of time of boredom and inconvenience that I remember from my childhood. In my experience, they were almost always caused by a typhoons. Or as North Americans call it: hurricanes.
+I chose this dataset because I have experienced power outages myself - from outages that lasted a couple hours to blackouts that spanned a couple months at a time. When I hear the phrase "power outage," it brings back memories of my childhood, distinct stretches of time tinged with boredom and inconvenience but also marked with death and destruction.
+
+In my experience, power outages were almost always caused by typhoons. Or as we like to call them here in North America: hurricanes.
 
 
 
