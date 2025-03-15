@@ -126,10 +126,12 @@ My baseline model is a Decision Tree classifier using features like region, mont
 
 We limit the tree’s depth to 4 as a basic hyperparameter. For classification, we define our target as whether an outage affected more than 150,000 people, labeling it as 1 if above the threshold, 0 otherwise.
 
-The baseline model's accuracy is 62% while its precision is 41%. Not really that good. The model is not very confident in its positive predictions. 
+Result:
+1. The baseline model's accuracy is 66% 
+2. The baseline model's precision is 39%. Not really that good. The model is not very confident in its positive predictions. 
 
 ## Final Model
-For this final model, we're going to try using an SVC (Support Vector Classifier) to see if it performs better than our base model. To improve its accuracy, we’ll tweak some of the columns by applying transformations.
+For this final model, we're going to try using an [SVC](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html) (Support Vector Classifier) to see if it performs better than our base model. After all, the data is much more complex and has a lot of nonlinear interactions. To improve its accuracy, we’ll tweak some of the columns by applying transformations.
 
 One change we’re making is squaring the `ANOMALY.LEVEL`. The reason for this is that the extreme values of this feature don’t vary much, so squaring it spreads out the middle values more, making it easier for the model to find a clear separation.
 
@@ -137,12 +139,28 @@ We’re also applying an exponential transformation to another feature, `RES.PER
 
 Finally, we’re going to test different tolerance levels in the model to see how they affect its performance. The `tolerance` (tol) controls when the model stops training—lower values make it train longer, while higher values might make it stop too soon. We’ll experiment with this to find the best balance.
 
+The final model results are:
+1. Accuracy: 74%
+2. Precision: 60%
 
-
+A modest improvement from the baseline model. 
 
 ## Fairness Analysis
+I wanted to see if my model predicts outages equally well across different regions in the U.S. Specifically, I was curious about whether its precision (how often the model correctly predicts a high-impact outage) is similar for West Coast versus East Coast states. We define a high-impact outage as an outage that affected at least 150,000 customers.
+- Does East Coast vs West Coast matter for our model's predictions?
 
+I ran a permutation test with 100 trials to see if the precision difference between these two groups is statistically significant.
+Hypotheses:
+- **Null Hypothesis** (Fair Model): The model treats both regions fairly. The precision scores for Eastern and Western states are about the same, and any small differences we see are just due to random variation.
+- **Alternative Hypothesis** (Unfair Model): The model does not treat both regions the same. The precision score for Western states is meaningfully different from the precision score for Eastern states.
 
+Significance level: 0.05
+
+Here are the results:
+- Observed difference: 0.0375
+- p-value: 0.42
+
+Therefore, we can't reject the null hypothesis 
 
 
 
