@@ -22,6 +22,8 @@ In my experience, power outages were almost always caused by typhoons. Or as we 
 
 ## Data Cleaning and Exploratory Data Analysis
 
+<iframe src="assets/hurricane_outages_by_state.html" width="800" height="600" frameborder="0"></iframe>
+
 
 ## Assessment of Missingness
 
