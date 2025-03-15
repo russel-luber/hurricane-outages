@@ -1,4 +1,4 @@
-# Lights Out: An Analysis of Power Outages
+# Lights Out on the Coasts: An Analysis of Power Outages
 by Russel Luber ([rluber@ucsd.edu](mailto:rluber@ucsd.edu))
 
 ## Introduction
@@ -114,12 +114,15 @@ Here we see the dashed red line pointing to where the observed difference in med
 ## Framing a Prediction Problem
 While `OUTAGE.DURATION` is a good indicator of how impactful an outage is, I am more interested in how it affects people. So instead of just looking at duration, we’ll use the data to predict how many people (customers) are affected. This will help organizations spot events that are likely to impact a lot of people, allowing them to take action ahead of time. Prediction is an important part of disaster preparedness.
 
-Looking at the initial models, I noticed that the data is pretty skewed. A lot of really low values that show up often, along with a few extreme outliers. This has led to very high RMSE values, making it a poor predictor for how many customers are actually affected. To fix this, I’ll switch to a classification model and create a new variable, "High_Risk_Customers," which will be a simple yes/no label for whether an event affects more than a certain number of people. This way, the model focuses on identifying high-risk areas and key risk factors instead of trying to predict exact numbers.
+Playing around with other model, I noticed that the data is pretty skewed. A lot of really low values that show up often, along with a few extreme outliers. This has led to very high RMSE values, making it a poor predictor for how many customers are actually affected. 
+
+To fix this, I switched to a classification model and create a new variable, "High_Risk_Customers," which will be a simple yes/no label for whether an event affects more than a certain number of people. This way, the model focuses on identifying high-risk areas and key risk factors instead of trying to predict exact numbers.
 
 To evaluate the model, we’ll use precision score to make sure we’re correctly identifying the communities most likely to be impacted. That way, stakeholder organizations can prioritize resources for the events that actually matter the most, thus allowing for a more efficient response to such outages.
 
 ## Baseline Model
 My baseline model is a Decision Tree classifier using features like region, month, climate data, outage cause, customer percentages, and population stats. We one-hot encode categorical variables and leave numerical and ordinal ones as they are since month is already numeric.
+- Some of these features include `NERC.REGION`, `ANOMALY.LEVEL`, `CLIMATE.REGION`, `RES.PERCEN`, `POPULATION` and `CUSTOMERS.AFFECTED`, just to name a few.
 
 We limit the tree’s depth to 4 as a basic hyperparameter. For classification, we define our target as whether an outage affected more than 150,000 people, labeling it as 1 if above the threshold, 0 otherwise.
 
@@ -144,7 +147,7 @@ A modest improvement from the baseline model.
 
 ## Fairness Analysis
 I wanted to see if my model predicts outages equally well across different regions in the U.S. Specifically, I was curious about whether its precision (how often the model correctly predicts a high-impact outage) is similar for West Coast versus East Coast states. We define a high-impact outage as an outage that affected at least 150,000 customers.
-- Does East Coast vs West Coast matter for our model's predictions?
+- Does East Coast vs. West Coast matter for our model's predictions?
 
 I ran a permutation test with 100 trials to see if the precision difference between these two groups is statistically significant.
 Hypotheses:
@@ -161,5 +164,5 @@ The results are in:
 - Observed difference: 0.0375
 - p-value: 0.42
 
-Therefore, we fail reject the null hypothesis. The likely culprit of our observed difference in precision is random chance. This suggests that the model treats both regions (East Coast vs West Coast) fairly. There is no strong evidence that the model predicts outages significantly better in one region over the other. 
+Therefore, we fail reject the null hypothesis. The likely culprit of our observed difference in precision is random chance. This suggests that the model treats both regions (East Coast vs. West Coast) fairly. There is no strong evidence that the model predicts outages significantly better in one region over the other. 
 
