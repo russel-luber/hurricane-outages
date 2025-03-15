@@ -1,8 +1,5 @@
-# Lights Out in the Eye of the Storm
-A Data Analysis of Power Outages and Hurricanes
-
+# Lights Out: An Analysis of Power Outages
 by Russel Luber ([rluber@ucsd.edu](mailto:rluber@ucsd.edu))
-
 
 ## Introduction
 In this project, I worked on a dataset about major power outage events in the continental United States. This dataset can be accessed online [here](https://engineering.purdue.edu/LASCI/research-data/outages), courtesy of Purdue University's Laboratory for Advancing Sustainable Critical Infrastructure. An article detailing the data dictionary for the dataset can be found [here](https://www.sciencedirect.com/science/article/pii/S2352340918307182).
@@ -160,8 +157,7 @@ Here is the distribution of the differences in precision:
 
 <iframe src="assets/fairness_precision_diffs2.html" width="800" height="600" frameborder="0" ></iframe>
 
-
-Here are the results:
+The results are in:
 - Observed difference: 0.0375
 - p-value: 0.42
 
