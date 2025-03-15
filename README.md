@@ -156,13 +156,14 @@ Hypotheses:
 
 Significance level: 0.05
 
+Here is the distribution of the differences in precision:
+
+<iframe src="assets/fairness_precision_diffs2.html" width="800" height="600" frameborder="0" ></iframe>
+
+
 Here are the results:
 - Observed difference: 0.0375
 - p-value: 0.42
 
-Therefore, we can't reject the null hypothesis 
-
-
-
-
+Therefore, we fail reject the null hypothesis. The likely culprit of our observed difference in precision is random chance. This suggests that the model treats both regions (East Coast vs West Coast) fairly. There is no strong evidence that the model predicts outages significantly better in one region over the other. 
 
