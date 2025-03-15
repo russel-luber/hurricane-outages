@@ -64,7 +64,7 @@ I also looked at the distributions of `CUSTOMERS.AFFECTED` by `CAUSE.CATEGORY` t
 #### Interesting Aggregates
 I wanted to get a sense of averages when it came to my features of interest: `CUSTOMERS.AFFECTED`, `DEMAND.LOSS.MW`, and `OUTAGE.DURATION`. I created a pivot table indexed by state.
 
-<iframe src="assets/pivot_table.md" width="800" height="600" frameborder="0" ></iframe>
+{% include assets/pivot_table.md %}
 
 
 ## Assessment of Missingness
