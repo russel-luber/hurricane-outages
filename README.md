@@ -128,7 +128,7 @@ We limit the tree’s depth to 4 as a basic hyperparameter. For classification, 
 
 Result:
 1. The baseline model's accuracy is 66% 
-2. The baseline model's precision is 39%. Not really that good. The model is not very confident in its positive predictions. 
+2. The baseline model's precision is 35%. Not really that good. The model is not very confident in its positive predictions. 
 
 ## Final Model
 For this final model, we're going to try using an [SVC](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html) (Support Vector Classifier) to see if it performs better than our base model. After all, the data is much more complex and has a lot of nonlinear interactions. To improve its accuracy, we’ll tweak some of the columns by applying transformations.
@@ -140,8 +140,8 @@ We’re also applying an exponential transformation to another feature, `RES.PER
 Finally, we’re going to test different tolerance levels in the model to see how they affect its performance. The `tolerance` (tol) controls when the model stops training—lower values make it train longer, while higher values might make it stop too soon. We’ll experiment with this to find the best balance.
 
 The final model results are:
-1. Accuracy: 74%
-2. Precision: 60%
+1. Accuracy: 71%
+2. Precision: 50%
 
 A modest improvement from the baseline model. 
 
@@ -161,8 +161,8 @@ Here is the distribution of the differences in precision:
 <iframe src="assets/fairness_precision_diffs2.html" width="800" height="600" frameborder="0" ></iframe>
 
 The results are in:
-- Observed difference: 0.0375
-- p-value: 0.42
+- Observed difference: 0.06858
+- p-value: 0.12
 
 Therefore, we fail reject the null hypothesis. The likely culprit of our observed difference in precision is random chance. This suggests that the model treats both regions (East Coast vs. West Coast) fairly. There is no strong evidence that the model predicts outages significantly better in one region over the other. 
 
