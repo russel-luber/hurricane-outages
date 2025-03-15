@@ -41,11 +41,31 @@ That's why I decided to shift my analysis and look at the bigger picture. I took
 
 <iframe src="assets/univariate_2.html" width="800" height="600" frameborder="0" ></iframe>
 
-This bar chart shows the number of power outages categorized by reported cause. A good chunk of the outages were due to "severe weather," only a subset of which are hurricanes. So I decided to pivot my analysis towards damage and people affected.
+This bar chart shows the number of power outages categorized by reported cause. About 50% of the outages were due to "severe weather," only a subset of which are hurricanes. So I decided to pivot my analysis towards damage and people affected.
 
 <iframe src="assets/univariate_3.html" width="800" height="600" frameborder="0" ></iframe>
 
-This chart shows how many millions of U.S. resident customers have been affected by power outages over time. While not much can be gleaned from it, it's worth noting the spikes over time, some of which may be attributed to hurricanes, over "severe weather" more broadly.
+This chart shows how many millions of U.S. resident customers have been affected by power outages over time. In 2008, about 20 million people experienced at least one power outage!
+
+While not much can be gleaned from it, it's worth noting the spikes over time, some of which may be attributed to hurricanes, over "severe weather" more broadly.
+
+#### Bivariate Analysis
+To analyze the relationship between features in the dataset, I did a few bivariate analyses. In particular, I was interested in damage and the toll on people's lives caused by these outages, so I focused on `CUSTOMERS.AFFECTED`. 
+
+<iframe src="assets/bivariate_1.html" width="800" height="600" frameborder="0" ></iframe>
+
+In this scatterplot, I looked at the relationship between `CUSTOMERS.AFFECTED` and `OUTAGE.DURATION`. Judging from the scatterplot, the variability is low save for a bunch of outliers. Most power outages affected a lot of people (in the hundreds of thousands) and lasted more than a few weeks at worst.
+
+
+<iframe src="assets/bivariate_2.html" width="800" height="600" frameborder="0" ></iframe>
+
+I also looked at the distributions of `CUSTOMERS.AFFECTED` by `CAUSE.CATEGORY` to get a better grasp on the outliers. It seems that "severe weather" outages had a lot of outliers with respect to the number of people affected. Needless to say, these outlier events are power outages that affected millions of people.
+
+#### Interesting Aggregates
+I wanted to get a sense of averages when it came to my features of interest: `CUSTOMERS.AFFECTED`, `DEMAND.LOSS.MW`, and `OUTAGE.DURATION`. I created a pivot table indexed by state.
+
+{% include pivot_table.md %}
+
 
 ## Assessment of Missingness
 
